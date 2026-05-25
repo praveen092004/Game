@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .Piano {
+            display: flex;
+            justify-content: center;
+            height: 200px;
+        }
+
+        #key {
+            border: 2px solid black;
+            padding: 20px;
+            margin: 5px;
+            background-color: white;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Piano</h1>
+    <div class="Piano">
+        <div id="key" data-note="C">C</div>
+        <div id="key" data-note="D">D</div>
+        <div id="key" data-note="E">E</div>
+        <div id="key" data-note="F">F</div>
+        <div id="key" data-note="G">G</div>
+        <div id="key" data-note="A">A</div>
+        <div id="key" data-note="B">B</div>
+    </div>
+
+    <audio id="audio-A" src="./asset/freesound_community-la-80237.mp3"></audio>
+    <audio id="audio-B" src="./asset/freesound_community-mi-80239.mp3"></audio>
+    <audio id="audio-C" src="./asset/freesound_community-piano-76656.mp3"></audio>
+    <audio id="audio-D" src="./asset/u_c58whxla22-f-piano-f4-422093.mp3"></audio>
+    <audio id="audio-E" src="./asset/u_c58whxla22-f-piano-f4-422093.mp3"></audio>
+    <audio id="audio-F" src="./asset/u_c58whxla22-g-piano-g4-422102.mp3"></audio>
+    <audio id="audio-G" src="./asset/u_c58whxla22-high-c-piano-c5-422108.mp3"></audio>
+
+    <script>
+        const keys = document.querySelectorAll("#key")
+
+        keys.forEach(function (e) {
+
+            const note = e.getAttribute("data-note")
+
+            const audio = document.getElementById("audio-" + note)
+
+            e.addEventListener('click', function () {
+                audio.currentTime = 0
+                audio.play()
+            })
+        });
+    </script>
+</body>
+
+</html>
